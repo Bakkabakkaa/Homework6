@@ -37,12 +37,8 @@ public class HomeController : Controller
         };
         
         _products.Add(newProduct);
-        var model = new IndexModel
-        {
-            Products = _products
-        };
         
-        return View("Index", model);
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
