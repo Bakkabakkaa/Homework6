@@ -7,15 +7,36 @@ namespace WebApplication1.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private static readonly List<Product> _products = new List<Product>();
 
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string category, string description, int price, int quantity)
     {
-        return View();
+
+        var model = new IndexModel
+        {
+            Products = _products
+        };
+        
+        return View(model);
+    }
+    
+    [HttpPost]
+    public IActionResult Another(string category, string description, int price, int quantity)
+    {
+        var model = new CreateProductModel
+        {
+            Category = category,
+            Description = description,
+            Price = price,
+            Quantity = quantity
+        };
+        
+        return View("Index");
     }
 
     public IActionResult Privacy()

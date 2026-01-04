@@ -1,17 +1,18 @@
-﻿@{
+﻿@model IndexModel;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <form>
+    <form action="@Url.Action("Another", "Home")" method="post">
         Category:<br/>
-        <input type="text" name="name" value=""/><br/>
+        <input type="text" name="Category" value=""/><br/>
         Description:<br/>
-        <input type="text" name="description" value=""/><br/>
+        <input type="text" name="Description" value=""/><br/>
         Price:<br/>
-        <input type="number" name="price" value=""/><br/>
+        <input type="number" name="Price" value=""/><br/>
         Quantity:<br/>
-        <input type="number" name="quantity" value=""/><br/>
+        <input type="number" name="Quantity" value=""/><br/>
         <input type="submit" value="Create"/><br/>
     </form>
 </div>
