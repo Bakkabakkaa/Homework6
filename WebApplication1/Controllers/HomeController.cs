@@ -26,16 +26,8 @@ public class HomeController : Controller
     }
     
     [HttpPost("create-product")]
-    public IActionResult CreateProduct(string category, string description, int price, int quantity)
+    public IActionResult CreateProduct([FromForm] Product newProduct)
     {
-        var newProduct = new Product()
-        {
-            Category = category,
-            Description = description,
-            Price = price,
-            Quantity = quantity
-        };
-        
         _products.Add(newProduct);
         
         return RedirectToAction("Index");
