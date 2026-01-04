@@ -28,7 +28,7 @@ public class HomeController : Controller
     [HttpPost("create-product")]
     public IActionResult CreateProduct(string category, string description, int price, int quantity)
     {
-        var model = new CreateProductModel
+        var newProduct = new Product()
         {
             Category = category,
             Description = description,
@@ -36,7 +36,13 @@ public class HomeController : Controller
             Quantity = quantity
         };
         
-        return View("Index");
+        _products.Add(newProduct);
+        var model = new IndexModel
+        {
+            Products = _products
+        };
+        
+        return View("Index", model);
     }
 
     public IActionResult Privacy()
