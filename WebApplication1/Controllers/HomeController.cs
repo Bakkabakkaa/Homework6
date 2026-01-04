@@ -25,8 +25,8 @@ public class HomeController : Controller
         return View(model);
     }
     
-    [HttpPost]
-    public IActionResult Another(string category, string description, int price, int quantity)
+    [HttpPost("create-product")]
+    public IActionResult CreateProduct(string category, string description, int price, int quantity)
     {
         var model = new CreateProductModel
         {
