@@ -22,7 +22,8 @@
                 <td>@products[i].Description</td>
                 <td>@products[i].Price</td>
                 <td>@products[i].Quantity</td>
-                <td>✎⌫</td>
+                <td><a href="@Url.Action("EditProduct", "Home", new { id = products[i].ID })">✎</a>
+                    ⌫</td>
             </tr>
         }
     </table>

@@ -35,6 +35,36 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet("edit-product")]
+    public IActionResult EditProduct(int id)
+    {
+        var product = _products.FirstOrDefault(p => p.ID == id);
+
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        return View(product);
+    }
+
+    [HttpPost("update-product")]
+    public IActionResult UpdateProduct(Product updateProduct)
+    {
+        var product = _products.FirstOrDefault(p => p.ID == updateProduct.ID);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        product.Category = updateProduct.Category;
+        product.Description = updateProduct.Description;
+        product.Price = updateProduct.Price;
+        product.Quantity = updateProduct.Quantity;
+
+        return RedirectToAction("Index");
+    }
+
     public IActionResult Privacy()
     {
         return View();
